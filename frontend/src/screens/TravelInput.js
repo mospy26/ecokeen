@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Button, StyleSheet } from 'react-native'
+import { Text, View, Button, StyleSheet, Image, TouchableOpacity} from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default class TravelInput extends Component {
@@ -29,12 +29,13 @@ export default class TravelInput extends Component {
     renderPage = (question, options, toChange) =>{
         console.log(this.state)
         return (
-            <View>
-                <Text> Did you travel? </Text>
-                <Text>{question}</Text>
+            <View style={{backgroundColor:'white', flex:1}}>
+                <Text style={{marginLeft: 20, marginTop: 40, color: 'black', fontSize: 15}}> DID YOU </Text>
+                <Text style={{marginLeft: 20, color: 'black', fontSize: 40, fontWeight: 'bold', color:'#284142'}}> Travel? </Text>
+                <Text style={{marginLeft: 20, marginTop: 80, color: 'black', fontSize: 25, textAlign:'center', letterSpacing:1}}>{question}</Text>
                 <DropDownPicker
                     items={options}
-                    containerStyle={{height: 40}}
+                    containerStyle={{height: 40, marginLeft: 20, marginRight: 20, marginTop: 20}}
                     style={{backgroundColor: '#fafafa'}}
                     itemStyle={{
                         justifyContent: 'flex-start'
@@ -42,17 +43,22 @@ export default class TravelInput extends Component {
                     dropDownStyle={{backgroundColor: '#fafafa'}}
                     onChangeItem={item => this.changeState(toChange, item)}
                 />
-                <Button title="Next" onPress={()=>{this.incrementPage()}}/>
+                <TouchableOpacity onPress={()=>{this.incrementPage()}} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 12, marginTop: 20, marginLeft: 20, marginRight:20}}>
+                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>Next</Text>
+                </TouchableOpacity>
             </View>
         )
     }
 
     renderSubmissionPage = () =>{
        return (
-        <View>
-            <Text> Submitted! </Text>
-            <Button title="View History"/>
-        </View>
+        <View style={{backgroundColor:'white', flex:1, justifyContent:'center', alignItems:'center'}}>
+             <Image source={require('../../assets/submitted.png')} style={{alignItems:'center'}}/>
+             <Text style={{marginLeft: 20, marginTop:40, color: 'black', fontSize: 40, fontWeight: 'bold', color:'#284142', textAlign:'center'}}> Submitted! </Text>
+             <TouchableOpacity style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 60, marginTop: 40, marginLeft: 20, marginRight:20}}>
+                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>View History</Text>
+            </TouchableOpacity>
+         </View>
        )
     }
 

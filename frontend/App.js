@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from  'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import Home from './src/screens/Home';
 import TravelInput from './src/screens/TravelInput';
@@ -20,10 +20,10 @@ const navigator = createStackNavigator({
   TravelHistory: TravelHistory,
   Profile: Profile,
 }, {
-initialRouteName: "Home",
-defaultNavigationOptions:{
-  title: "Ecokeen"
-}
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+        title: "Ecokeen"
+    }
 })
 
 export default createAppContainer(navigator)
