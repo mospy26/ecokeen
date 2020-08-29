@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String password;
 
@@ -19,10 +19,10 @@ public class User {
     private String email;
 
     @OneToMany(targetEntity = Grocery.class, cascade = CascadeType.ALL)
-    private List<Grocery> groceries = new ArrayList<>();
+    private final List<Grocery> groceries = new ArrayList<>();
 
     @OneToMany(targetEntity = Travel.class, cascade = CascadeType.ALL)
-    private List<Travel> travels = new ArrayList<>();
+    private final List<Travel> travels = new ArrayList<>();
 
     public String getName() {
         return name;

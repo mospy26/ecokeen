@@ -1,5 +1,10 @@
 package com.ecokeen.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +19,7 @@ public class GroceryBrand {
 
     private String name;
 
+    @Transient
     @OneToMany(targetEntity = Grocery.class, cascade = CascadeType.ALL)
     private List<Grocery> groceries = new ArrayList<>();
 
