@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 
-export default class HistoryCard extends Component {
+export default class TravelHistoryCard extends Component {
     render() {
         const styles = StyleSheet.create({
             cardStyle: {

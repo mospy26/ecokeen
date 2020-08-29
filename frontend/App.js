@@ -22,9 +22,8 @@ const navigator = createStackNavigator({
   TravelHistory: TravelHistory,
   Profile: Profile,
   Unauthenticated: Unauthenticated,
-  History, History,
 }, {
-    initialRouteName: "History",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
         title: "Ecokeen"
     }
