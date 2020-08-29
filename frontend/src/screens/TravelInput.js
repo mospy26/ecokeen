@@ -55,7 +55,7 @@ export default class TravelInput extends Component {
         <View style={{backgroundColor:'white', flex:1, justifyContent:'center', alignItems:'center'}}>
              <Image source={require('../../assets/submitted.png')} style={{alignItems:'center'}}/>
              <Text style={{marginLeft: 20, marginTop:40, color: 'black', fontSize: 40, fontWeight: 'bold', color:'#284142', textAlign:'center'}}> Submitted! </Text>
-             <TouchableOpacity style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 60, marginTop: 40, marginLeft: 20, marginRight:20}}>
+             <TouchableOpacity onPress={()=>{this.props.navigation.navigate("TravelHistory")}} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 60, marginTop: 40, marginLeft: 20, marginRight:20}}>
                     <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>View History</Text>
             </TouchableOpacity>
          </View>

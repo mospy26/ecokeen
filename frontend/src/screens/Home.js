@@ -32,12 +32,12 @@ export default class Home extends Component {
                     <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>to travel input</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("GroceryHistory")}} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 12, marginTop: 20, marginLeft: 20, marginRight:20}}>
-                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>to grocery history</Text>
+                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("MainHistory")}} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 12, marginTop: 20, marginLeft: 20, marginRight:20}}>
+                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>To history</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("TravelHistory")}} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 12, marginTop: 20, marginLeft: 20, marginRight:20}}>
-                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>to travel history</Text>
+                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Unauthenticated")}} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 12, marginTop: 60, marginLeft: 20, marginRight:20}}>
+                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>Log In</Text>
                 </TouchableOpacity>
 
                 <View style={styles.tabNavigationStyle}>
@@ -54,9 +54,6 @@ export default class Home extends Component {
                     <   Icon reverse name="person"> </Icon>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Unauthenticated")}} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 12, marginTop: 60, marginLeft: 20, marginRight:20}}>
-                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>Log In</Text>
-                </TouchableOpacity>
 
             </View>
         )
