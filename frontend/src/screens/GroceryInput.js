@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default class GroceryInput extends Component {
@@ -44,27 +44,31 @@ export default class GroceryInput extends Component {
     renderPage = (question, options, toChange) =>{
         console.log(this.state)
         return (
-            <View>
-                <Text> Bought some Groceries? </Text>
-                <Text>{question}</Text>
+            <View style={{backgroundColor:'white', flex:1}}>
+                <Text style={{marginLeft: 20, marginTop: 40, color: 'black', fontSize: 15}}> BOUGHT SOME </Text>
+                <Text style={{marginLeft: 20, color: 'black', fontSize: 40, fontWeight: 'bold', color:'#284142'}}> Groceries? </Text>
+                <Text style={{marginLeft: 20, marginTop: 80, color: 'black', fontSize: 25, textAlign:'center', letterSpacing:1}}>{question}</Text>
                 <DropDownPicker
                     items={options}
-                    containerStyle={{height: 40}}
+                    containerStyle={{height: 60, marginLeft: 20, marginRight: 20, marginTop: 20}}
                     style={{backgroundColor: '#fafafa'}}
                     itemStyle={{
-                        justifyContent: 'flex-start'
+                        justifyContent: 'flex-start',
                     }}
                     dropDownStyle={{backgroundColor: '#fafafa'}}
                     onChangeItem={item => this.changeState(toChange, item)}
                 />
-                <Button title="Next" onPress={()=>{this.incrementPage()}}/>
+                <TouchableOpacity onPress={()=>{this.incrementPage()}} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 12, marginTop: 20, marginLeft: 20, marginRight:20}}>
+                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>Next</Text>
+                </TouchableOpacity>
+                {/* <Button title="Next" onPress={()=>{this.incrementPage()}}/> */}
             </View>
         )
     }
 
     renderSubmissionPage = () =>{
         return (
-         <View>
+         <View style={{backgroundColor:'white', flex:1}}>
              <Text> Submitted! </Text>
              <Button title="View History"/>
          </View>
