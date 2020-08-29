@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default class GroceryInput extends Component {
@@ -61,16 +61,18 @@ export default class GroceryInput extends Component {
                 <TouchableOpacity onPress={()=>{this.incrementPage()}} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 12, marginTop: 20, marginLeft: 20, marginRight:20}}>
                     <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>Next</Text>
                 </TouchableOpacity>
-                {/* <Button title="Next" onPress={()=>{this.incrementPage()}}/> */}
             </View>
         )
     }
 
     renderSubmissionPage = () =>{
         return (
-         <View style={{backgroundColor:'white', flex:1}}>
-             <Text> Submitted! </Text>
-             <Button title="View History"/>
+         <View style={{backgroundColor:'white', flex:1, justifyContent:'center', alignItems:'center'}}>
+             <Image source={require('../../assets/submitted.png')} style={{alignItems:'center'}}/>
+             <Text style={{marginLeft: 20, marginTop:40, color: 'black', fontSize: 40, fontWeight: 'bold', color:'#284142', textAlign:'center'}}> Submitted! </Text>
+             <TouchableOpacity style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 60, marginTop: 40, marginLeft: 20, marginRight:20}}>
+                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>View History</Text>
+            </TouchableOpacity>
          </View>
         )
      }
