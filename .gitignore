@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/reactnative,react,java,maven,macos,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=reactnative,react,java,maven,macos,windows
 
+../.java_version
+
+
 ### Java ###
 # Compiled class file
 *.class
