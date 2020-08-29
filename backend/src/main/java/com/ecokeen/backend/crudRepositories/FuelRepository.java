@@ -2,6 +2,7 @@ package com.ecokeen.backend.crudRepositories;
 
 import com.ecokeen.backend.model.Fuel;
 import com.ecokeen.backend.model.Grocery;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
@@ -9,5 +10,5 @@ import org.springframework.data.repository.CrudRepository;
 
 
 // Integer represents the primary key 
-public interface FuelRepository extends CrudRepository<Fuel, Integer> {
+public interface FuelRepository extends JpaRepository<Fuel, Integer> {
 }
