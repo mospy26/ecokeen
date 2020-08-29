@@ -19,7 +19,9 @@ public class UserDAO {
         System.out.println("jajhajha");
         User user = secureUserRepository.findByEmail(email);
         if (user == null) return "Incorrect password details";
-        if (BCrypt.checkpw(password, user.getPassword())) return new JwtUtil().generateToken(email);
+        if (BCrypt.checkpw(password, user.getPassword())) {
+            return "{'token': '" + new JwtUtil().generateToken(email) + "', 'id': '" + user.getId() + "'}";
+        }
         else return "Incorrect login details!";
     }
 
