@@ -25,7 +25,7 @@ public class TravelController {
     @PostMapping(path="add/{id}") // Map ONLY POST Requests
     public @ResponseBody Boolean addTravelHistory (@RequestParam String name,
                                         @RequestParam String carBrand,
-                                        @PathVariable("id") Integer id,
+                                        @RequestParam("id") Integer id,
                                         @RequestParam String email,
                                         @RequestParam String carType,
                                         @RequestParam String petrolType,

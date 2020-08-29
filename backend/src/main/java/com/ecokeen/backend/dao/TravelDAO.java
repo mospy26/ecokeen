@@ -54,7 +54,7 @@ public class TravelDAO {
         travelRepository.save(g);
         
         VehicleType vt = new VehicleType();
-        vt.setName(brand);
+        vt.setName(vehicle);
         vehicleTypeRepository.save(vt);
 
         VehicleBrand vb = new VehicleBrand();

@@ -26,7 +26,7 @@ public class GroceryController {
     Boolean addGroceryHistory (@RequestParam String name,
                               @RequestParam Integer quantity,
                               @RequestParam String product,
-                                @RequestParam Integer id, @RequestHeader String token) {
+                                @PathVariable("id") Integer id, @RequestHeader String token) {
         if (!verifyUser(token)) return null;
         return groceryDAO.addGroceryHistory(name, quantity, product, id);
     }
