@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Button, TextInput } from 'react-native'
+import { Text, View, TouchableOpacity, TextInput } from 'react-native'
 
 export default class Unauthenticated extends Component {
 
@@ -36,10 +36,14 @@ export default class Unauthenticated extends Component {
     render() {
         return (
             <View>
-                <Text style='red'> Log in </Text>
-                <Text> Email </Text><TextInput placeholder="example@gmail.com" onChangeText={(text) => this.changeEmail(text)}></TextInput> 
-                <Text> Password </Text><TextInput secureTextEntry={true} onChangeText={(text) => this.changePassword(text)}></TextInput>
-                <Button title="Log in" disabled={!this.enableLogin()} onPress={() => this.authenticate()}></Button>
+                <Text style={{marginLeft: 20, color: 'black', fontSize: 40, fontWeight: 'bold', color:'#284142'}}> Log In </Text>
+                <Text style={{marginLeft: 20, marginTop: 80, color: 'black', fontSize: 25, textAlign:'left', letterSpacing:1}}>Email</Text>
+                <TextInput placeholder="example@gmail.com" onChangeText={(text) => this.changeEmail(text)}></TextInput> 
+                <Text style={{marginLeft: 20, marginTop: 20, color: 'black', fontSize: 25, textAlign:'left', letterSpacing:1}}>Password</Text>
+                <TextInput secureTextEntry={true} onChangeText={(text) => this.changePassword(text)}></TextInput>
+                <TouchableOpacity onPress={() => this.authenticate()} style={{elevation: 8, backgroundColor: "#284243", borderRadius: 5, paddingVertical: 20, paddingHorizontal: 12, marginTop: 20, marginLeft: 20, marginRight:20}}>
+                    <Text style={{fontSize: 18, color: "#fff", fontWeight: "bold", alignSelf: "center",textTransform: "uppercase"}}>Log In</Text>
+                </TouchableOpacity>
             </View>
         )
     }
