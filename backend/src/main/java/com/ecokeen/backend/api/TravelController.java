@@ -1,6 +1,8 @@
 package com.ecokeen.backend.api;
 
 import com.ecokeen.backend.crudRepositories.TravelRepository;
+import com.ecokeen.backend.model.Travel;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,17 +26,33 @@ public class TravelController {
     }
 
     @GetMapping(path="/history/{id}")
-    public @ResponseBody String getTravelHistory(
+    public @ResponseBody Iterable<Travel> getTravelHistory(
             @PathVariable("id") Integer id) {
         // SELECT * FROM Travel WHERE User.id = id
-        return "/all/id";
+        return travelRepository.findLatest10(id);
     }
 
-    @GetMapping(path="/footprint/{id}")
-    public @ResponseBody Integer getTravelFootprint(
+    @GetMapping(path="/average/{id}")
+    public @ResponseBody Float getAverageFootprint(
             @PathVariable("id") Integer id) {
-        // SELECT footprint FROM travel WHERE user.id = id
-        return -1;
+        return travelRepository.averageFootprint(id);
+    }
+
+    @GetMapping(path="/total/{id}")
+    public @ResponseBody Float getTotalFootprint(
+            @PathVariable("id") Integer id) {
+        return travelRepository.totalFootprint(id);
+    }
+    @GetMapping(path="/worst/{id}")
+    public @ResponseBody Float getWorstFootprint(
+            @PathVariable("id") Integer id) {
+        return travelRepository.worstFootprint(id);
+    }
+
+    @GetMapping(path="/best/{id}")
+    public @ResponseBody Float getBestFootprint(
+            @PathVariable("id") Integer id) {
+        return travelRepository.bestFootprint(id);
     }
 
 }
