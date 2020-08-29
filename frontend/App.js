@@ -10,6 +10,7 @@ import MainHistory from './src/screens/MainHistory';
 import GroceryHistory from './src/screens/GroceryHistory';
 import TravelHistory from '././src/screens/TravelHistory';
 import Profile from './src/screens/Profile'
+import Unauthenticated from './src/screens/Unauthenticated'
 
 const navigator = createStackNavigator({
   Home: Home,
@@ -19,6 +20,7 @@ const navigator = createStackNavigator({
   GroceryHistory: GroceryHistory,
   TravelHistory: TravelHistory,
   Profile: Profile,
+  Unauthenticated: Unauthenticated,
 }, {
     initialRouteName: "Home",
     defaultNavigationOptions: {
