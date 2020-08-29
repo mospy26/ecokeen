@@ -24,7 +24,13 @@ public class User {
     @OneToMany
     private List<Travel> travel;
 
-    public Long getId() {
+    public User(String name, String email, String password) {
+        this.setName(name);
+        this.setEmail(email);
+        this.setPassword(password);
+	}
+
+	public Long getId() {
         return id;
     }
 
