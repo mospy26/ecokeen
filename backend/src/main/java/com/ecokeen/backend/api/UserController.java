@@ -1,10 +1,12 @@
 package com.ecokeen.backend.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import com.ecokeen.backend.crudRepositories.SecureUserRepository;
 import com.ecokeen.backend.dao.UserDAO;
+import com.ecokeen.backend.dao.SecurityUtils.JwtUtil;
 import com.ecokeen.backend.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,8 +40,6 @@ public class UserController {
 
     @Autowired
     private UserDAO userDAO;
-
-    ObjectMapper objectMapper = new ObjectMapper();
 
     @PostMapping(path = "/register")
     public @ResponseBody String addNewUser(@RequestBody User user) {
@@ -69,6 +70,7 @@ public class UserController {
 
     @GetMapping(path="/footprint/average/{id}")
     public @ResponseBody Integer getAverageFootprint (@PathVariable("id") Integer id) {
+
         // x = SELECT footprint FROM groceries WHERE User.id = id
         // y = SELECT footprint FROM travel WHERE User.id = id
         // return x+y
@@ -99,9 +101,8 @@ public class UserController {
 
     // --------- TEST PURPOSES -----------------
     @GetMapping(path="/all")
-    public @ResponseBody Iterable<User> getAllUsers() {
+    public @ResponseBody Iterable<User> getAllUsers(@RequestHeader String token) {
         // This returns a JSON or XML with the users
-        return secureUserRepository.findAll();
+        return userDAO.verifyUser(token) != null ? secureUserRepository.findAll() : new ArrayList<User>();
     }
-
 }

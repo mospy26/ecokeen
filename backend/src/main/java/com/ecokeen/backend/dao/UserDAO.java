@@ -27,4 +27,11 @@ public class UserDAO {
         User user = secureUserRepository.save(new User(name, email, password));
         return user != null;
     }
+
+    public User verifyUser(String token) {
+        JwtUtil util = new JwtUtil();
+        User user = secureUserRepository.findByEmail(util.getUsernameFromToken(token));
+        if (user == null) return null;
+        return util.validateToken(token, user.getEmail()) ? user : null;
+    }
 }
