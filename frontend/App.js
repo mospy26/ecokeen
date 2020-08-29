@@ -11,6 +11,7 @@ import GroceryHistory from './src/screens/GroceryHistory';
 import TravelHistory from '././src/screens/TravelHistory';
 import Profile from './src/screens/Profile'
 import Unauthenticated from './src/screens/Unauthenticated'
+import History from './src/screens/History'
 
 const navigator = createStackNavigator({
   Home: Home,
@@ -21,8 +22,9 @@ const navigator = createStackNavigator({
   TravelHistory: TravelHistory,
   Profile: Profile,
   Unauthenticated: Unauthenticated,
+  History, History,
 }, {
-    initialRouteName: "Home",
+    initialRouteName: "History",
     defaultNavigationOptions: {
         title: "Ecokeen"
     }
