@@ -27,7 +27,6 @@ export default class TravelInput extends Component {
     }
 
     renderPage = (question, options, toChange) =>{
-        console.log(this.state)
         return (
             <View style={{backgroundColor:'white', flex:1}}>
                 <Text style={{marginLeft: 20, marginTop: 40, color: 'black', fontSize: 15}}> DID YOU </Text>

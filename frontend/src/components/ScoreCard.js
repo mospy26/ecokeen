@@ -5,7 +5,9 @@ export default class ScoreCard extends Component {
     render() {
         return (
             <View>
-                <Text> ScoreCard </Text>
+                <Text> {this.props.name} </Text>
+                <Text> {this.props.date} </Text>
+                <Text> {this.props.score} </Text>
             </View>
         )
     }
