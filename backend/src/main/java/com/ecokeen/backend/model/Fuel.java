@@ -17,6 +17,7 @@ public class Fuel {
 
     private float carbonValue;
 
+    @Transient
     @OneToMany(targetEntity = Travel.class, cascade = CascadeType.ALL)
     private List<Travel> travels = new ArrayList<>();
 

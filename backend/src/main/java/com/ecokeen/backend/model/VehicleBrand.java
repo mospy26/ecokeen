@@ -13,6 +13,7 @@ public class VehicleBrand {
 
     private String name;
 
+    @Transient
     @OneToMany(targetEntity = Travel.class, cascade = CascadeType.ALL)
     private List<Travel> travels = new ArrayList<>();
 

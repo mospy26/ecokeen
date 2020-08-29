@@ -56,16 +56,16 @@ public class Travel {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(Timestamp timestamp2) {
+        this.timestamp = timestamp2;
     }
 
     public Float getDistance() {
         return distance;
     }
 
-    public void setDistance(Float distance) {
-        this.distance = distance;
+    public void setDistance(Float distance2) {
+        this.distance = distance2;
     }
 
     public User getUser() {
@@ -80,7 +80,7 @@ public class Travel {
         return footprint;
     }
 
-    public void setFootprint(Float footprint) {
-        this.footprint = footprint;
+    public void setFootprint(float d) {
+        this.footprint = d;
     }
 }
