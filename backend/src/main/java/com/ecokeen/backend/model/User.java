@@ -1,8 +1,8 @@
 package com.ecokeen.backend.model;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
-import java.util.List;
 import java.util.List;
 
 @Entity
@@ -10,7 +10,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String password;
 
@@ -19,10 +19,26 @@ public class User {
     private String email;
 
     @OneToMany(targetEntity = Grocery.class, cascade = CascadeType.ALL)
-    private final List<Grocery> groceries = new ArrayList<>();
+    private List<Grocery> groceries = new ArrayList<>();
 
+    public User() {}
+    
+    public User(String name, String email, String password) {
+        this.setName(name);
+        this.setEmail(email);
+        this.setPassword(password);
+	}
+
+	public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+  
     @OneToMany(targetEntity = Travel.class, cascade = CascadeType.ALL)
-    private final List<Travel> travels = new ArrayList<>();
+    private List<Travel> travels = new ArrayList<>();
 
     public String getName() {
         return name;
