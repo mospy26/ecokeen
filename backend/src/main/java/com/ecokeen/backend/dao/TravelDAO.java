@@ -77,5 +77,22 @@ public class TravelDAO {
     public Float setFootprint(Float distance)  {
         return (float) 0.7 * distance;
         // TO CHANGE TO A PROPER FORMULA OF SOME SORT 
+	}
+	
+	public Iterable<Travel> getHistory(Integer id) {
+        return travelRepository.findLatest10(id);
     }
+
+    public Float getTravelAverageFootprint(Integer id) {
+        return travelRepository.averageFootprint(id);
+    }
+
+    public Float getTravelBestFootprint(Integer id) {
+        return travelRepository.bestFootprint(id);
+    }
+
+    public Float getTravelWorstFootprint(Integer id) {
+        return travelRepository.worstFootprint(id);
+    }
+
 }

@@ -21,7 +21,7 @@ public interface TravelRepository extends JpaRepository<Travel, Integer> {
     @Query(value="SELECT SUM(footprint) from travel WHERE user_id = :id", nativeQuery=true)
     Float totalFootprint(Integer id);
 
-    @Query(value="SELECT MIN(footprint) from travel WHERE user_id = :id", nativeQuery=true)
+    @Query(value="SELECT MAX(footprint) from travel WHERE user_id = :id", nativeQuery=true)
     Float worstFootprint(Integer id);
 
     @Query(value="SELECT MIN(footprint) from travel WHERE user_id = :id", nativeQuery=true)

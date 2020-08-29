@@ -2,6 +2,7 @@ package com.ecokeen.backend.api;
 
 import com.ecokeen.backend.crudRepositories.GroceryRepository;
 import com.ecokeen.backend.dao.GroceryDAO;
+import com.ecokeen.backend.dao.UserDAO;
 import com.ecokeen.backend.model.Grocery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,41 +18,53 @@ public class GroceryController {
     @Autowired
     private GroceryDAO groceryDAO;
 
+    @Autowired
+    private UserDAO userDAO;
+
     @PostMapping(path="add/{id}") // Map ONLY POST Requests
     public @ResponseBody
-    boolean addGroceryHistory (@RequestParam String name,
+    Boolean addGroceryHistory (@RequestParam String name,
                               @RequestParam Integer quantity,
                               @RequestParam String product,
-                                @RequestParam Integer id) {
+                                @RequestParam Integer id, @RequestHeader String token) {
+        if (!verifyUser(token)) return null;
         return groceryDAO.addGroceryHistory(name, quantity, product, id);
     }
 
     @GetMapping(path="/history/{id}")
     public @ResponseBody Iterable<Grocery> getGroceryHistory(
-            @PathVariable("id") Integer id) {
+            @PathVariable("id") Integer id, 
+            @RequestHeader String token) {
         // SELECT * FROM Grocery WHERE User.id = id
-        return groceryDAO.getHistory(id);
+        return verifyUser(token) ? groceryDAO.getHistory(id) : null;
     }
 
     @GetMapping(path="/footprint/average/{id}")
     public @ResponseBody Float getAverageGroceryFootprint(
-            @PathVariable("id") Integer id) {
+            @PathVariable("id") Integer id,
+            @RequestHeader String token) {
         // SELECT footprint FROM grocery WHERE user.id = id
-        return groceryDAO.getGroceryAverageFootprint(id);
+        return verifyUser(token) ? groceryDAO.getGroceryAverageFootprint(id) : null;
     }
 
     @GetMapping(path="/footprint/best/{id}")
     public @ResponseBody Float getBestGroceryFootprint(
-            @PathVariable("id") Integer id) {
+            @PathVariable("id") Integer id,
+            @RequestHeader String token) {
         // SELECT footprint FROM grocery WHERE user.id = id
-        return groceryDAO.getGroceryBestFootprint(id);
+        return verifyUser(token) ? groceryDAO.getGroceryBestFootprint(id) : null;
     }
 
     @GetMapping(path="/footprint/worst/{id}")
     public @ResponseBody Float getWorstGroceryFootprint(
-            @PathVariable("id") Integer id) {
+            @PathVariable("id") Integer id,
+            @RequestHeader String token) {
         // SELECT footprint FROM grocery WHERE user.id = id
-        return groceryDAO.getGroceryWorstFootprint(id);
+       return verifyUser(token) ? groceryDAO.getGroceryWorstFootprint(id) : null;
+    }
+
+    public boolean verifyUser(String token) {
+        return userDAO.verifyUser(token) != null;
     }
 
 }
