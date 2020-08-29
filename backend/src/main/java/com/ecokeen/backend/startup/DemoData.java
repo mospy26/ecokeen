@@ -43,8 +43,8 @@ public class DemoData {
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
 //        deleteAll();
-//        onlyUsers();
-        withRelationship();
+        onlyUsers();
+//        withRelationship();
     }
 
     public void deleteAll() {
