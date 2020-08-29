@@ -7,18 +7,21 @@ import com.ecokeen.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+@Component
 @Repository("secureUserRepository")
 public class SecureUserRepository implements UserRepository {
 
     @Autowired
     @Qualifier("userRepository")
     private UserRepository userRepository;
-
+    
     @Override
     public User save(User user) {
         String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
+        user.setPassword(encodedPassword);
         return userRepository.save(user);
     }
 
@@ -76,4 +79,9 @@ public class SecureUserRepository implements UserRepository {
     public User findByEmailAndPassword(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password);
     }
+
+    @Override
+	public User findByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
 }

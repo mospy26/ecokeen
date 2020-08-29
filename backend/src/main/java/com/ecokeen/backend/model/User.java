@@ -1,8 +1,6 @@
 package com.ecokeen.backend.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.List;
 
 @Entity
@@ -24,6 +22,8 @@ public class User {
     @OneToMany
     private List<Travel> travel;
 
+    public User() {}
+    
     public User(String name, String email, String password) {
         this.setName(name);
         this.setEmail(email);
