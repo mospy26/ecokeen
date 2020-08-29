@@ -30,12 +30,11 @@ export default class GroceryInput extends Component {
     }
 
     incrementPage = () =>{
-        //need to add check for null values on state, currently possible to submit without selecting a value
-        if(this.state.stage>2){
+        if(this.state.stage>1){
             //handle submit
             //submit state to backend
         }
-        else{
+        else if(this.state.stage===0 && this.state.grocery || this.state.stage===1 && this.state.quantity){
             this.setState({
                 stage: this.state.stage + 1,
             })

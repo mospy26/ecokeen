@@ -13,13 +13,13 @@ export default class TravelInput extends Component {
         }
     }
 
+    //TODO: add error repsonse whem trying to increment on nu   ll value
     incrementPage = () =>{
-        //need to add check for null values on state, currently possible to submit without selecting a value
         if(this.state.stage>2){
             //handle submit
             //submit state to backend
         }
-        else{
+        else if((this.state.stage===0 && this.state.carBrand) || (this.state.stage===1 && this.state.distanceTravlled) || (this.state.stage===2 && this.state.petrolType)){
             this.setState({
                 stage: this.state.stage + 1,
             })
