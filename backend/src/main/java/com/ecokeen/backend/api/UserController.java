@@ -9,7 +9,7 @@ import com.ecokeen.backend.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.ecokeen.backend.crudRepositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
@@ -65,41 +65,43 @@ public class UserController {
             return e.getMessage();
         }
    }
-//
-//    @GetMapping(path="/all")
-//    public @ResponseBody Iterable<User> getAllUsers() {
-//        // This returns a JSON or XML with the users
-//        return secureUserRepository.findAll();
-//    }
-//
-//    @Autowired
-//    public PersonController(PersonService personService) {
-//        this.personService = personService;
-//    }
-//
-//    @PostMapping
-//    public void addPerson(@Validated @NonNull @RequestBody Person person) {
-//        personService.addPerson(person);
-//    }
-//
-//    @GetMapping
-//    public List<Person> getAllPeople() {
-//        return personService.getAllPeople();
-//    }
-//
-//    @GetMapping(path = "{id}")
-//    public Person getPersonByID(@PathVariable("id") UUID id) {
-//        return personService.getPersonById(id).orElse(null);
-//    }
-//
-//    @DeleteMapping(path = "{id}")
-//    public void deletePersonById(@PathVariable("id") UUID id) {
-//        personService.deletePerson(id);
-//    }
-//
-//    @PutMapping(path = "{id}")
-//    public void updatePerson(@PathVariable("id") UUID id, @Validated @NonNull @RequestBody Person personToUpdate) {
-//        personService.updatePerson(id, personToUpdate);
-//    }
+
+
+    @GetMapping(path="/footprint/average/{id}")
+    public @ResponseBody Integer getAverageFootprint (@PathVariable("id") Integer id) {
+        // x = SELECT footprint FROM groceries WHERE User.id = id
+        // y = SELECT footprint FROM travel WHERE User.id = id
+        // return x+y
+        return id;
+    }
+
+    @GetMapping(path="/footprint/best/{id}/")
+    public @ResponseBody Integer getBestFootprint (@PathVariable("id") Integer id) {
+        // x = SELECT MIN(footprint) FROM groceries WHERE User.id = id
+        // y = SELECT MIN(footprint) FROM travel WHERE User.id = id
+        // return min(x,y)
+        return id;
+    }
+
+    @GetMapping(path="/footprint/worst/{id}/")
+    public @ResponseBody Integer getWorseFootprint (@PathVariable("id") Integer id) {
+        // x = SELECT max(footprint) FROM groceries WHERE User.id = id
+        // y = SELECT max(footprint) FROM travel WHERE User.id = id
+        // return max(x,y)
+        return id;
+    }
+
+    @GetMapping(path="/footprint/all/{id}")
+    public @ResponseBody String getLastTenDaysFootprint (@PathVariable("id") Integer id) {
+        // SELECT values FROM users BETWEEN CURDATE() - 10 AND CURDATE()
+        return "hello";
+    }
+
+    // --------- TEST PURPOSES -----------------
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<User> getAllUsers() {
+        // This returns a JSON or XML with the users
+        return userRepository.findAll();
+    }
 
 }

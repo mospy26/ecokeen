@@ -16,11 +16,8 @@ public class User {
 
     private String email;
 
-    @OneToMany
-    private List<Grocery> grocery;
-
-    @OneToMany
-    private List<Travel> travel;
+    @OneToMany(targetEntity = Grocery.class, cascade = CascadeType.ALL)
+    private List<Grocery> groceries = new ArrayList<>();
 
     public User() {}
     
@@ -37,6 +34,9 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+  
+    @OneToMany(targetEntity = Travel.class, cascade = CascadeType.ALL)
+    private List<Travel> travels = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -60,5 +60,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void addTravel(Travel travel) {
+        travels.add(travel);
+    }
+
+    public void addGroceries(Grocery grocery) {
+        groceries.add(grocery);
     }
 }
