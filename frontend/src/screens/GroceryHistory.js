@@ -42,7 +42,7 @@ export default class TravelHistory extends Component {
                 <FlatList 
                     data={data}
                     renderItem={this.renderItem}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.id.toString()}
                 />
 
                 <View style={styles.tabNavigationStyle}>
