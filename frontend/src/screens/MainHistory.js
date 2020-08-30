@@ -23,7 +23,7 @@ export default class MainHistory extends Component {
           });
         return (
             <View>
-                <Text> Carbon Footprint </Text>
+               <Text style={{marginLeft: 20, marginTop: 40, color: 'black', fontSize: 15}}> CARBON FOOTPRINT </Text>
                 <Text> Last 10 Days </Text>
                 <View> 
                     <LineChart  

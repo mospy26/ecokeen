@@ -11,10 +11,26 @@ export default class GroceryHistoryCard extends Component {
           });
         return (
             <View style={styles.cardStyle}>
-                <Text> {this.props.date} </Text>
-                <Text> {this.props.grocery} </Text>
-                <Text> {this.props.quantity} </Text>
-                <Text> {this.props.emission} </Text>
+                <Text style={{marginLeft: 20, marginTop: 40,color: 'grey',}}>
+                    {this.props.date}
+                </Text>
+
+                <View style={{marginLeft: 20, marginRight: 20, marginTop: 40, flexDirection: 'row', backgroundColor:'white', paddingVertical:20, paddingHorizontal: 20, borderWidth:1, borderRadius: 5, alignItems:'center', justifyContent: 'space-between' }}>
+                    <View style={{flexDirection:'column'}}>
+                        <Text style={{color: 'black', fontSize: 15, marginBottom:10}}>
+                            {this.props.grocery}
+                        </Text>
+                        <Text style={{color: 'black', fontSize: 15}}>
+                            2
+                        </Text>
+                    </View>
+                    <Text style={{color: 'black', fontSize: 60, fontWeight:'bold', marginLeft:30}}>
+                        {this.props.score}
+                    </Text>
+                    <Text style={{color: 'black', fontSize: 15, lineHeight:30}}>
+                        TONS
+                    </Text>
+                </View>
             </View>
         )
     }
