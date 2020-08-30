@@ -10,12 +10,30 @@ export default class TravelHistoryCard extends Component {
             },
           });
         return (
-            <View style={styles.cardStyle}>
-                <Text> {this.props.date} </Text>
-                <Text> {this.props.carBrand} </Text>
-                <Text> {this.props.distance} </Text>
-                <Text> {this.props.fuelType} </Text>
-                <Text> {this.props.emission} </Text>
+           <View style={styles.cardStyle}>
+                <Text style={{marginLeft: 20, marginTop: 40,color: 'grey',}}>
+                    {this.props.date}
+                </Text>
+
+                <View style={{marginLeft: 20, marginRight: 20, marginTop: 40, flexDirection: 'row', backgroundColor:'white', paddingVertical:20, paddingHorizontal: 20, borderWidth:1, borderRadius: 5, alignItems:'center', justifyContent: 'space-between' }}>
+                    <View style={{flexDirection:'column'}}>
+                        <Text style={{color: 'black', fontSize: 15, marginBottom:10}}>
+                            {this.props.fuelType}
+                        </Text>
+                        <Text style={{color: 'black', fontSize: 15}}>
+                            {this.props.carBrand}
+                        </Text>
+                        <Text style={{color: 'black', fontSize: 15}}>
+                            {this.props.distance}
+                        </Text>
+                    </View>
+                    <Text style={{color: 'black', fontSize: 60, fontWeight:'bold', marginLeft:30}}>
+                        {this.props.score}
+                    </Text>
+                    <Text style={{color: 'black', fontSize: 15, lineHeight:30}}>
+                        TONS
+                    </Text>
+                </View>
             </View>
         )
     }
